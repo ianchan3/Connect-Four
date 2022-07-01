@@ -1,0 +1,12 @@
+body {
+  background-color: lightblue;
+  color:blue;
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat (7, 10vmin);
+  grid-template-row: repeat (6, 10vmin);
+  background-color: yellow;
+  border: 0.5vmin
+}
