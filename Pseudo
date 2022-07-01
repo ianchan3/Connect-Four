@@ -1,0 +1,8 @@
+The game of Connect Four involves two players: player 1 and player 2.
+The two players have different colored pieces: blue for player 1 and red for player 2.
+The game is played on a 6 x 7 gridboard.
+Each player takes turns placing their pieces and the first to four pieces in a row wins the game.
+The 4 pieces in a row can be achieved in a vertical, horizontal, or diagonal line.
+If there are no more spaces (null), then the game results in a tie and the draw message will appear.
+If any player reaches 4 in a row, the winning player will be announced and winning message will appear.
+The play again button will appear (render) after the game is no longer in progress.
