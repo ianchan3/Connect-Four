@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  background-color: pink;
 }
 
 body {
@@ -13,9 +14,10 @@ body {
 }
 
 h1 {
-  background-color: lightblue;
+  background-color: blue;
   position: center;
-  color:blue;
+  color:yellow;
+  font-size: 25px;
 }
 
 #board {
@@ -23,14 +25,22 @@ h1 {
   grid-template-rows: repeat(6, 10vmin);
   grid-template-columns: repeat(7, 13vmin);
   border: 1vmin solid black;
-  background-color: yellow;
+  border-radius: 10%;
   padding: 20px;
+  background-color: yellow;
   gap: 1.5vmin
 }
 
 div {
   border: 0.8vmin solid black;
   border-radius: 50%;
+  
+}
+
+div:hover {
+  transform: scale(1.15);
+  transition: transform 150ms ease-in;
+  border-color: silver;
 }
 
 div, button {
@@ -40,4 +50,7 @@ div, button {
 button {
   font-size: 4vmin;
   justify-self: flex-start;
+  background-color: blue;
+  color: yellow;
+  border-color: red;
 }

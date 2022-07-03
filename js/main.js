@@ -13,7 +13,7 @@ let playerTurn; // 1 or -1; 0 for nobody home in that cell
 
 /*----- cached element references -----*/
 //saving (cache) any elements you want to save
-const circleEls = document.querySelectorAll("#board > div");
+const circleEls = [...document.querySelectorAll("#board > div")];
 const msgEl = document.querySelector("h2");
 const playBtn = document.querySelector('button')
 
@@ -63,7 +63,11 @@ function render() {
   // });
   renderMessage();
 
-
+function handleClick(evt) {
+  const colIdx = circleEls.indexOf(evt.target);
+  if (colIdx === -1) return;
+  console.log(colIdx);
+};
 
 function renderMessage() {
 
