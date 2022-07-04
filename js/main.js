@@ -2,7 +2,7 @@
 const PLAYER_COLOR_LOOKUP = {
   "1": "blue",
   "-1": "red",
-  "0": "white"
+  "0": "orange"
 };
 
 /*----- app's state (variables) -----*/
@@ -20,24 +20,23 @@ const playBtn = document.querySelector('button')
 /*----- event listeners -----*/
 document.getElementById('board').addEventListener('click', handleClick);
 // playBtn.addEventListener("click", init);
-//dont forget guards!!!!!!!
-//dont forget to change pointer when already occupied
+
 /*----- functions -----*/
 init();
 //job of init to initialize state and call render
 //any time you are updating state, you need to have a render call
 function init() {
   board = [
-    [1, 0, 0, 0, 0, -1], //column 0
-    [-1, 0, 0, 0, 0, 0], //column 1
-    [1, 0, 0, 0, 0, 0], //column 2
-    [1, 0, 0, 0, 0, 0], //column 3
-    [1, 0, 0, 0, 0, 0], //column 4
+    [0, 0, 0, 0, 0, 0], //column 0
+    [0, 0, 0, 0, 0, 0], //column 1
+    [0, 0, 0, 0, 0, 0], //column 2
+    [0, 0, 0, 0, 0, 0], //column 3
+    [0, 0, 0, 0, 0, 0], //column 4
     [0, 0, 0, 0, 0, 0], //column 5
-    [1, 0, 0, 0, 0, -1], //column 6
+    [0, 0, 0, 0, 0, 0], //column 6
   ];
-playerTurn = 1;
-render();
+  playerTurn = 1;
+  render();
 }
   // [c0r5, c1r5, c2r5, c3r5, c4r5, c5r5, c6r5,]
   // [c0r4, c1r4, c2r4, c3r4, c4r4, c5r4, c6r4,]
@@ -53,22 +52,31 @@ render();
 function render() {
   board.forEach(function(colArr, colIdx) {
     colArr.forEach(function(cellVal, rowIdx) {
-  const cellEl = document.getElementById(`c${colIdx}r${rowIdx}`);
-  cellEl.style.backgroundColor = PLAYER_COLOR_LOOKUP[cellVal];
+    const cellEl = document.getElementById(`c${colIdx}r${rowIdx}`);
+    cellEl.style.backgroundColor = PLAYER_COLOR_LOOKUP[cellVal];
+    });
   });
-});
 }
-  // circleEls.forEach(function(circleEl, idx) {
-  //   circleEl.style.backgroundColor = PLAYER_COLOR_LOOKUP[board[idx]];
-  // });
-  renderMessage();
+  // renderCircles();
+
+
+function renderCircles() {
+  circleEls.forEach(function(circleEl, colIdx) {
+  circleEl.style.visibility = board[colIdx].includes(0) ? "visible" : "hidden";
+  });
+}
 
 function handleClick(evt) {
   const colIdx = circleEls.indexOf(evt.target);
   if (colIdx === -1) return;
-  console.log(colIdx);
+  const colArr = board[colIdx];
+  if (!colArr.includes(0)) return;
+  const rowIdx = colArr.indexOf(0);
+  colArr[rowIdx] = playerTurn;
+  playerTurn *= -1;
+  render();
 };
 
-function renderMessage() {
+// function renderMessage() {
 
-};
+// };
