@@ -1,14 +1,16 @@
 /*----- constants -----*/
-const PLAYER_COLOR_LOOKUP = {
+const PLAYER_COLOR = {
   "1": "blue",
   "-1": "red",
-  "0": "orange"
+  0: "orange"
 };
+
+
 
 /*----- app's state (variables) -----*/
 let board; 
 let playerTurn; // 1 or -1; 0 for nobody home in that cell
-// let gameStatus; // null -> game is in playerTurn; 1/-1 player window; "T" -> tie
+let gameStatus; // null -> game is in playerTurn; 1/-1 player window; "T" -> tie
 
 
 /*----- cached element references -----*/
@@ -36,6 +38,7 @@ function init() {
     [0, 0, 0, 0, 0, 0], //column 6
   ];
   playerTurn = 1;
+  gameStatus = 0;
   render();
 }
   // [c0r5, c1r5, c2r5, c3r5, c4r5, c5r5, c6r5,]
@@ -49,20 +52,10 @@ function init() {
 
 //Render's job is to transfer/visualize
 //all state to the DOM
-function render() {
-  board.forEach(function(colArr, colIdx) {
-    colArr.forEach(function(cellVal, rowIdx) {
-    const cellEl = document.getElementById(`c${colIdx}r${rowIdx}`);
-    cellEl.style.backgroundColor = PLAYER_COLOR_LOOKUP[cellVal];
-    });
-  });
-}
-  // renderCircles();
-
 
 function renderCircles() {
   circleEls.forEach(function(circleEl, colIdx) {
-  circleEl.style.visibility = board[colIdx].includes(0) ? "visible" : "hidden";
+    circleEl.style.visibility = board[colIdx].includes(0) ? "visible" : "hidden";
   });
 }
 
@@ -77,6 +70,28 @@ function handleClick(evt) {
   render();
 };
 
-// function renderMessage() {
+function getGameStatus() {
+  if (!board.includes(0)) return "T";
+  return 0;
+}
 
-// };
+function render() {
+  board.forEach(function(colArr, colIdx) {
+    colArr.forEach(function(cellVal, rowIdx) {
+    const cellEl = document.getElementById(`c${colIdx}r${rowIdx}`);
+    cellEl.style.backgroundColor = PLAYER_COLOR[cellVal];
+  });
+});
+renderMessage();
+playBtn.style.visibility = gameStatus ? "visible" : "hidden";
+}
+
+function renderMessage() {
+  if (gameStatus === 0) {
+    msgEl.innerHTML = `Player <span style="color: ${PLAYER_COLOR[playerTurn]}">${PLAYER_COLOR[playerTurn].toUpperCase()}</span>'s Turn`;
+  } else if (gameStatus === "T") {
+    msgEl.textContent = "Another Tie Game"
+  } else {
+    msgEl.innerHTML = `Player <span style="color:${PLAYER_COLOR[gameStatus]}">${PLAYER_COLOR[gameStatus].toUpperCase()}</span>'s Wins!`;
+  }
+};
