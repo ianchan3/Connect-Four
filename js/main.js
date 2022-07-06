@@ -108,10 +108,17 @@ function checkHorzWin(colIdx, rowIdx, player) {
   return count >= 4 ? winner = turn : 0;
 }
 
+// function checkDiagonalLeftWin {
+//   const colArr = board[colIdx];
+//   let count = 1;
+//   let idx = 
+  
+// }
+
 function getGameStatus() {
   
-//   if (!board.includes(0)) return "T";
-//   return 0;
+  // if (!board.includes(0)) return "T";
+  // return 0;
 }
 
 function render() {
