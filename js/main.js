@@ -42,7 +42,6 @@ function init() {
   ];
   turn = 1;
   gameStatus = 0;
-  renderMessage
   render();
 }
   // [c0r5, c1r5, c2r5, c3r5, c4r5, c5r5, c6r5,]
@@ -75,9 +74,9 @@ function handleClick(evt) {
 function checkWin(colIdx, rowIdx) {
   const player = board[colIdx][rowIdx];
   if (checkVertWin(colIdx, rowIdx, player) ||
-  checkHorzWin(colIdx, rowIdx, player))
-  // checkDiagonalUpRightWin(columnIdx, rowIdx, player) ||
-  // checkDiagonalLeftWin(columnIdx, rowIdx, player)
+  checkHorzWin(colIdx, rowIdx, player) ||
+  checkDiagonalLeftWin(colIdx, rowIdx) ||
+  // checkDiagonalRightWin(colIdx, rowIdx))
   return turn;
   }
 
@@ -105,20 +104,33 @@ function checkHorzWin(colIdx, rowIdx, player) {
     count++;
     idx--;
   }
+  return count === 4 ? winner = turn : 0;
+}
+
+function checkDiagonalLeftWin(colIdx, rowIdx) {
+  const player = board[colIdx][rowIdx];
+  let count = 1;
+  let idx1 = colIdx - 1;
+  let idx2 = rowIdx + 1;
+
+  while (idx1 >= 0 && idx2 < board[0].length && board[idx1][idx2] === player) {
+    count++;
+    idx1--;
+    idx2++;
+  }
+  idx1 = colIdx + 1;
+  idx2 = rowIdx - 1;
+  while (idx1 < board.length && idx2 >= 0 && board[idx1][idx2] === player) {
+    count++;
+    idx1++;
+    idx2--;
+  }
   return count >= 4 ? winner = turn : 0;
 }
 
-// function checkDiagonalLeftWin {
-//   const colArr = board[colIdx];
-//   let count = 1;
-//   let idx = 
-  
-// }
-
 function getGameStatus() {
-  
-  // if (!board.includes(0)) return "T";
-  // return 0;
+  if (!board.includes(0)) return "T";
+  return 0;
 }
 
 function render() {
@@ -136,7 +148,7 @@ function renderMessage() {
   if (gameStatus === 0) {
     msgEl.innerHTML = `Player <span style="color: ${PLAYER_COLOR[turn]}">${PLAYER_COLOR[turn].toUpperCase()}</span>'s Turn`;
   } else if (gameStatus === "T") {
-    msgEl.textContent = "Another Tie Game"
+    msgEl.textContent = "Another Tie Game";
   } else {
     msgEl.innerHTML = `Player <span style="color:${PLAYER_COLOR[winner]}">${PLAYER_COLOR[winner].toUpperCase()}</span>'s Wins!`;
   }
