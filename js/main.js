@@ -9,8 +9,9 @@ const PLAYER_COLOR = {
 
 /*----- app's state (variables) -----*/
 let board; 
-let playerTurn; // 1 or -1; 0 for nobody home in that cell
-let gameStatus; // null -> game is in playerTurn; 1/-1 player window; "T" -> tie
+let turn; // 1 or -1; 0 for nobody home in that cell
+let gameStatus; // null -> game is in turn; 1/-1 player window; "T" -> tie
+let player;
 
 
 /*----- cached element references -----*/
@@ -19,9 +20,10 @@ const circleEls = [...document.querySelectorAll("#board > div")];
 const msgEl = document.querySelector("h2");
 const playBtn = document.querySelector('button')
 
+
 /*----- event listeners -----*/
 document.getElementById('board').addEventListener('click', handleClick);
-// playBtn.addEventListener("click", init);
+playBtn.addEventListener("click", init);
 
 /*----- functions -----*/
 init();
@@ -37,7 +39,7 @@ function init() {
     [0, 0, 0, 0, 0, 0], //column 5
     [0, 0, 0, 0, 0, 0], //column 6
   ];
-  playerTurn = 1;
+  turn = 1;
   gameStatus = 0;
   render();
 }
@@ -48,31 +50,49 @@ function init() {
   // [c0r1, c1r1, c2r1, c3r1, c4r1, c5r1, c6r1,] 
   // [c0r0, c1r0, c2r0, c3r0, c4r0, c5r0, c6r0,]
 
-
-
-//Render's job is to transfer/visualize
-//all state to the DOM
-
-function renderCircles() {
-  circleEls.forEach(function(circleEl, colIdx) {
-    circleEl.style.visibility = board[colIdx].includes(0) ? "visible" : "hidden";
-  });
-}
+// function renderCircles() {
+//   circleEls.forEach(function(circleEl, colIdx) {
+//     circleEl.style.visibility = board[colIdx].includes(0) ? "visible" : "hidden";
+//   });
+// }
 
 function handleClick(evt) {
   const colIdx = circleEls.indexOf(evt.target);
   if (colIdx === -1) return;
   const colArr = board[colIdx];
-  if (!colArr.includes(0)) return;
+  if (!colArr.includes(0)) return; //guard/
   const rowIdx = colArr.indexOf(0);
-  colArr[rowIdx] = playerTurn;
-  playerTurn *= -1;
+  colArr[rowIdx] = turn;
+  GameStatus = getGameStatus();
+  turn *= -1;
+  winner = checkWin(colIdx, rowIdx);
+  // if (winner === checkVertWin) return ; // create a guard for after vertical win
   render();
 };
 
+function checkWin(colIdx, rowIdx) {
+  const player = board[colIdx][rowIdx];
+  return checkVertWin(colIdx, rowIdx, player);
+  // ||
+  // checkDiagonalUpRightWin(columnIdx, rowIdx, player) ||
+  // checkDiagonalLeftWin(columnIdx, rowIdx, player)
+  };
+
+function checkVertWin(colIdx, rowIdx, player) {
+  const colArr = board[colIdx];
+  let count = 1;
+  rowIdx--;
+  while (colArr[rowIdx] === player && rowIdx >= 0) {
+      count++;
+      rowIdx--;
+  }
+  return count === 4 ? player : 0;
+}
+
 function getGameStatus() {
-  if (!board.includes(0)) return "T";
-  return 0;
+  
+//   if (!board.includes(0)) return "T";
+//   return 0;
 }
 
 function render() {
@@ -83,15 +103,17 @@ function render() {
   });
 });
 renderMessage();
-playBtn.style.visibility = gameStatus ? "visible" : "hidden";
+playBtn.style.visibility = winner ? "visible" : "hidden";
 }
 
 function renderMessage() {
-  if (gameStatus === 0) {
-    msgEl.innerHTML = `Player <span style="color: ${PLAYER_COLOR[playerTurn]}">${PLAYER_COLOR[playerTurn].toUpperCase()}</span>'s Turn`;
-  } else if (gameStatus === "T") {
+  if (winner === 0) {
+    msgEl.innerHTML = `Player <span style="color: ${PLAYER_COLOR[turn]}">${PLAYER_COLOR[turn].toUpperCase()}</span>'s Turn`;
+  } else if (winner === "T") {
     msgEl.textContent = "Another Tie Game"
   } else {
-    msgEl.innerHTML = `Player <span style="color:${PLAYER_COLOR[gameStatus]}">${PLAYER_COLOR[gameStatus].toUpperCase()}</span>'s Wins!`;
+    msgEl.innerHTML = `Player <span style="color:${PLAYER_COLOR[winner]}">${PLAYER_COLOR[winner].toUpperCase()}</span>'s Wins!`;
   }
 };
+
+
