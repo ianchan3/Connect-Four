@@ -12,6 +12,7 @@ let board;
 let turn; // 1 or -1; 0 for nobody home in that cell
 let gameStatus; // null -> game is in turn; 1/-1 player window; "T" -> tie
 let player;
+let winner;
 
 
 /*----- cached element references -----*/
@@ -41,6 +42,7 @@ function init() {
   ];
   turn = 1;
   gameStatus = 0;
+  renderMessage
   render();
 }
   // [c0r5, c1r5, c2r5, c3r5, c4r5, c5r5, c6r5,]
@@ -72,21 +74,38 @@ function handleClick(evt) {
 
 function checkWin(colIdx, rowIdx) {
   const player = board[colIdx][rowIdx];
-  return checkVertWin(colIdx, rowIdx, player);
-  // ||
+  if (checkVertWin(colIdx, rowIdx, player) ||
+  checkHorzWin(colIdx, rowIdx, player))
   // checkDiagonalUpRightWin(columnIdx, rowIdx, player) ||
   // checkDiagonalLeftWin(columnIdx, rowIdx, player)
-  };
+  return turn;
+  }
 
 function checkVertWin(colIdx, rowIdx, player) {
   const colArr = board[colIdx];
   let count = 1;
   rowIdx--;
-  while (colArr[rowIdx] === player && rowIdx >= 0) {
+  while(colArr[rowIdx] === player && rowIdx >= 0) {
       count++;
       rowIdx--;
   }
-  return count === 4 ? player : 0;
+  return count === 4 ? winner = turn : 0;
+}
+
+function checkHorzWin(colIdx, rowIdx, player) {
+  const colArr = board[colIdx];
+  let count = 1;
+  let idx = colIdx + 1;
+  while(idx < board.length && board[idx][rowIdx] === player) {
+      count++;
+      idx++;
+  }
+  idx = colIdx - 1;
+  while((idx >= 0) && board[idx][rowIdx] === player) {
+    count++;
+    idx--;
+  }
+  return count >= 4 ? winner = turn : 0;
 }
 
 function getGameStatus() {
@@ -107,13 +126,11 @@ playBtn.style.visibility = winner ? "visible" : "hidden";
 }
 
 function renderMessage() {
-  if (winner === 0) {
+  if (gameStatus === 0) {
     msgEl.innerHTML = `Player <span style="color: ${PLAYER_COLOR[turn]}">${PLAYER_COLOR[turn].toUpperCase()}</span>'s Turn`;
-  } else if (winner === "T") {
+  } else if (gameStatus === "T") {
     msgEl.textContent = "Another Tie Game"
   } else {
     msgEl.innerHTML = `Player <span style="color:${PLAYER_COLOR[winner]}">${PLAYER_COLOR[winner].toUpperCase()}</span>'s Wins!`;
   }
 };
-
-
