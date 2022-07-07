@@ -14,36 +14,33 @@ body {
 }
 
 header {
-  background-color: orange;
-  position: center;
-  color:yellow;
-  font-size: 25px;
   position: relative;
-  top: 120px;
+  color:blue;
+  font-size: 8vmin;
+  top: 18vmin;
 }
 
 h2 {
   position: relative;
-  top: 130px;
+  top: 19vmin;
 }
 
 #markers {
   display: grid;
   grid-template-columns: repeat(7, 12.6vmin);
-  gap: 0vmin;
+  gap: 0.5vmin;
   margin-top: 0.2vmin;
   
 }
 
 #markers > div {
   height: 1vmin;
+  position: relative;
   border-width: 5vmin;
   border-style: solid;
   border-color: blue transparent transparent;
   transform: scale(0.7);
-  position: relative;
-  top: 125px;
-  
+  top: 18vmin;
 }
 
 #markers > div:hover {
@@ -53,16 +50,16 @@ h2 {
 }
 
 #board {
+  position: relative;
   display: grid;
   grid-template-rows: repeat(6, 9vmin);
   grid-template-columns: repeat(7, 12vmin);
-  position: relative;
   margin-top: 15vmin;
   border: 1vmin solid black;
   border-radius: 10%;
   padding: 20px;
   background-color: yellow;
-  gap: 1.25vmin
+  gap: 1.25vmin;
 }
 
 div {
@@ -81,9 +78,11 @@ div, button {
 }
 
 button {
-  font-size: 4vmin;
-  justify-self: flex-start;
-  background-color: blue;
+  position: relative;
   color: yellow;
+  background-color: blue;
   border-color: red;
+  font-size: 7vmin;
+  right: 75vmin;
+  bottom: 41vmin;
 }
