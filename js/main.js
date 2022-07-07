@@ -1,8 +1,8 @@
 /*----- constants -----*/
 const PLAYER_COLOR = {
-  "1": "blue",
-  "-1": "red",
-  0: "orange"
+  "1": "skyblue",
+  "-1": "lightcoral",
+  0: "rgb(249, 249, 161)"
 };
 
 /*----- app's state (variables) -----*/
