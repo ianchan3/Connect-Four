@@ -1,9 +1,11 @@
 * {
   box-sizing: border-box;
-  background-color: lightgreen;
 }
 
 body {
+  background: url("https://i.pinimg.com/originals/d8/39/74/d839742a057e1d111d0373fa614de906.jpg");
+  background-size: cover;
+  background-position: center;
   height: 100vmin;
   display: flex;
   flex-direction: column;
@@ -15,7 +17,7 @@ body {
 
 header {
   position: relative;
-  color:blue;
+  color: blue;
   font-size: 8vmin;
   top: 18vmin;
 }
