@@ -17,13 +17,13 @@ let winner;
 
 /*----- cached element references -----*/
 //saving (cache) any elements you want to save
-const circleEls = [...document.querySelectorAll("#board > div")];
+const markerEls = [...document.querySelectorAll("#markers > div")];
 const msgEl = document.querySelector("h2");
 const playBtn = document.querySelector('button')
 
 
 /*----- event listeners -----*/
-document.getElementById('board').addEventListener('click', handleClick);
+document.getElementById('markers').addEventListener('click', handleDrop);
 playBtn.addEventListener("click", init);
 
 /*----- functions -----*/
@@ -51,14 +51,14 @@ function init() {
 // [c0r1, c1r1, c2r1, c3r1, c4r1, c5r1, c6r1,] 
 // [c0r0, c1r0, c2r0, c3r0, c4r0, c5r0, c6r0,]
 
-// function renderCircles() {
-//   circleEls.forEach(function(circleEl, colIdx) {
-//     circleEl.style.visibility = board[colIdx].includes(0) ? "visible" : "hidden";
-//   });
-// }
+function renderMarkers() {
+  markerEls.forEach(function(markerEl, colIdx) {
+    markerEl.style.visibility = board[colIdx].includes(0) ? "visible" : "hidden";
+  });
+}
 
-function handleClick(evt) {
-  const colIdx = circleEls.indexOf(evt.target);
+function handleDrop(evt) {
+  const colIdx = markerEls.indexOf(evt.target);
   if (colIdx === -1) return;
   const colArr = board[colIdx];
   if (!colArr.includes(0)) return; //guard/
@@ -67,7 +67,7 @@ function handleClick(evt) {
   // gameStatus = getGameStatus();
   turn *= -1;
   winner = checkWin(colIdx, rowIdx);
-  // if (winner === checkVertWin) return ; // create a guard for after vertical win
+  if (winner === checkVertWin) return ; // create a guard for after vertical win
   render();
 };
 
@@ -76,7 +76,8 @@ function checkWin(colIdx, rowIdx) {
   return checkVertWin(colIdx, rowIdx, player) ||
       checkHorzWin(colIdx, rowIdx, player) ||
       checkDiagonalLeftWin(colIdx, rowIdx, player) ||
-      checkDiagonalRightWin(colIdx, rowIdx, player )
+      checkDiagonalRightWin(colIdx, rowIdx, player ) ||
+      (board.flat().includes(0) ? 0 : "T")
 };
 
 function checkVertWin(colIdx, rowIdx, player) {
@@ -165,5 +166,6 @@ function renderMessage() {
     msgEl.innerHTML = `Player <span style="color: ${PLAYER_COLOR[turn]}">${PLAYER_COLOR[turn].toUpperCase()}</span>'s Turn`; 
   } else if (winner === 1 || winner === -1) {
     msgEl.innerHTML = `Player <span style="color:${PLAYER_COLOR[winner*-1]}">${PLAYER_COLOR[winner*-1].toUpperCase()}</span>'s Wins!`;
-} 
+  } else if (winner === "T")
+    msgEl.innerHTML = "It's a Tie";
 }
