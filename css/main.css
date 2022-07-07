@@ -19,12 +19,12 @@ header {
   color:yellow;
   font-size: 25px;
   position: relative;
-  top: 80px;
+  top: 120px;
 }
 
 h2 {
   position: relative;
-  top: 100px;
+  top: 130px;
 }
 
 #markers {

@@ -16,7 +16,6 @@ let winner;
 
 
 /*----- cached element references -----*/
-//saving (cache) any elements you want to save
 const markerEls = [...document.querySelectorAll("#markers > div")];
 const msgEl = document.querySelector("h2");
 const playBtn = document.querySelector('button')
@@ -44,18 +43,6 @@ function init() {
   gameStatus = 0;
   render();
 }
-// [c0r5, c1r5, c2r5, c3r5, c4r5, c5r5, c6r5,]
-// [c0r4, c1r4, c2r4, c3r4, c4r4, c5r4, c6r4,]
-// [c0r3, c1r3, c2r3, c3r3, c4r3, c5r3, c6r3,]
-// [c0r2, c1r2, c2r2, c3r2, c4r2, c5r2, c6r2,]
-// [c0r1, c1r1, c2r1, c3r1, c4r1, c5r1, c6r1,] 
-// [c0r0, c1r0, c2r0, c3r0, c4r0, c5r0, c6r0,]
-
-function renderMarkers() {
-  markerEls.forEach(function(markerEl, colIdx) {
-    markerEl.style.visibility = board[colIdx].includes(0) ? "visible" : "hidden";
-  });
-}
 
 function handleDrop(evt) {
   const colIdx = markerEls.indexOf(evt.target);
@@ -64,7 +51,6 @@ function handleDrop(evt) {
   if (!colArr.includes(0)) return; //guard/
   const rowIdx = colArr.indexOf(0);
   colArr[rowIdx] = turn;
-  // gameStatus = getGameStatus();
   turn *= -1;
   winner = checkWin(colIdx, rowIdx);
   if (winner === checkVertWin) return ; // create a guard for after vertical win
@@ -133,8 +119,6 @@ function checkDiagonalRightWin(colIdx, rowIdx, player) {
   let count = 1;
   let idx1 = colIdx + 1;
   let idx2 = rowIdx + 1;
-  
-  
   while (idx1 < board.length && idx2 >= 0 && board[idx1][idx2] === colArr) {
       count++;
       idx1++;
@@ -158,7 +142,17 @@ function render() {
       });
   });
   renderMessage();
+  renderMarkers();
   playBtn.style.visibility = winner ? "visible" : "hidden";
+}
+
+function renderMarkers() {
+  markerEls.forEach(function(markerEl, colIdx) {
+    markerEl.style.visibility = board[colIdx].includes(0) ? "visible" : "hidden";
+    if (winner === -1 || winner === 1) {
+      markerEl.style.visibility = "hidden";
+    };
+  });
 }
 
 function renderMessage() {
