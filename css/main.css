@@ -22,7 +22,6 @@ body {
   font-family: Arial, Times, sans-serif;
 }
 
-
 h2 {
   position: relative;
   top: 19vmin;
@@ -33,7 +32,6 @@ h2 {
   grid-template-columns: repeat(7, 12.6vmin);
   gap: 0.5vmin;
   margin-top: 0.2vmin;
-  
 }
 
 #markers > div {
@@ -78,7 +76,6 @@ div:hover {
 
 div, button {
   cursor: pointer;
-
 }
 
 button {
