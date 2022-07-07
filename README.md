@@ -1,5 +1,5 @@
 # Connect-Four
-Connect Four is a two player game where players alternately places pieces on a board 7 columns across and 6 rows high. The first player to reach 4 pieces in a row (vertical, horizontal, or diagonal) wins the game. If there are no more spaces left on the board and no player has reached 4 pieces in a row, the game results in a tie.
+Connect Four is a two player game where players alternately place pieces on a board 7 columns across and 6 rows high. The first player to reach 4 pieces in a row (vertical, horizontal, or diagonal) wins the game. If there are no more spaces left on the board and no player has reached 4 pieces in a row, the game results in a tie.
 
 ## **Samples of Gameplay**
 https://i.imgur.com/P16YjDD.jpg, 
