@@ -13,6 +13,7 @@ body {
   background: url("https://i.pinimg.com/originals/d8/39/74/d839742a057e1d111d0373fa614de906.jpg");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   height: 100vmin;
   display: flex;
   flex-direction: column;
@@ -21,7 +22,6 @@ body {
   margin: 0;
   font-family: Arial, Times, sans-serif;
 }
-
 
 h2 {
   position: relative;
@@ -33,7 +33,6 @@ h2 {
   grid-template-columns: repeat(7, 12.6vmin);
   gap: 0.5vmin;
   margin-top: 0.2vmin;
-  
 }
 
 #markers > div {
@@ -78,7 +77,6 @@ div:hover {
 
 div, button {
   cursor: pointer;
-
 }
 
 button {
@@ -86,9 +84,8 @@ button {
   color: lightgreen;
   background-color: green;
   border-color: lightblue;
-  font-size: 7vmin;
-  right: 74vmin;
-  bottom: 41vmin;
+  font-size: 3.5vmin;
+  bottom: 77vmin;
 }
 
 button:hover {
@@ -108,4 +105,78 @@ button:hover {
   80% { transform: translate(-1px, -1px) rotate(1deg); }
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@media only screen and (max-width: 525px) {
+
+  body {
+    background: url("https://i.pinimg.com/originals/d8/39/74/d839742a057e1d111d0373fa614de906.jpg");
+    background-size: fill;
+    background-repeat: no-repeat;
+  }
+
+  #board {
+    position: relative;
+    display: grid;
+    grid-template-rows: repeat(6, 9vmin);
+    grid-template-columns: repeat(7, 12vmin);
+    margin-top: 15vmin;
+    top: 5vmin;
+    border: 1vmin solid black;
+    border-radius: 10%;
+    padding: 20px;
+    background-color: lightgreen;
+    gap: 1.25vmin;
+  }
+
+  button {
+    position: relative;
+    color: lightgreen;
+    background-color: green;
+    border-color: lightblue;
+    font-size: 4vmin;
+    bottom: 79vmin;
+  }
+}
+
+@media only screen and (min-width: 526px) and (max-width: 620px) {
+
+  body {
+    background: url("https://i.pinimg.com/originals/d8/39/74/d839742a057e1d111d0373fa614de906.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  #board {
+    position: relative;
+    display: grid;
+    grid-template-rows: repeat(6, 9vmin);
+    grid-template-columns: repeat(7, 12vmin);
+    margin-top: 15vmin;
+    top: 17vmin;
+    border: 1vmin solid black;
+    border-radius: 10%;
+    padding: 20px;
+    background-color: lightgreen;
+    gap: 1.25vmin;
+  }
+
+  button {
+    position: relative;
+    color: lightgreen;
+    background-color: green;
+    border-color: lightblue;
+    font-size: 4vmin;
+    bottom: 70vmin;
+  }
+
+  h2 {
+    position: relative;
+    top: 25vmin;
+  }
+
+  header {
+    position: relative;
+    top: 23vmin;
+  }
 }
