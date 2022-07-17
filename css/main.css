@@ -147,13 +147,75 @@ button:hover {
     background-repeat: no-repeat;
   }
 
+  #markers > div {
+    height: 1vmin;
+    position: relative;
+    border-width: 5vmin;
+    border-style: solid;
+    border-color: rgb(236, 144, 144) transparent transparent;
+    transform: scale(0.7);
+    top: 28vmin;
+  }
+
   #board {
     position: relative;
     display: grid;
     grid-template-rows: repeat(6, 9vmin);
     grid-template-columns: repeat(7, 12vmin);
     margin-top: 15vmin;
-    top: 17vmin;
+    top: 25vmin;
+    border: 1vmin solid black;
+    border-radius: 10%;
+    padding: 20px;
+    background-color: lightgreen;
+    gap: 1.25vmin;
+  }
+
+  button {
+    position: relative;
+    color: lightgreen;
+    background-color: green;
+    border-color: lightblue;
+    font-size: 4vmin;
+    bottom: 70vmin;
+  }
+
+  h2 {
+    position: relative;
+    top: 25vmin;
+  }
+
+  header {
+    position: relative;
+    top: 23vmin;
+  }
+}
+
+@media only screen and (min-width: 621px) and (max-width: 750px) {
+
+  body {
+    background: url("https://i.pinimg.com/originals/d8/39/74/d839742a057e1d111d0373fa614de906.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  #markers > div {
+    height: 1vmin;
+    position: relative;
+    border-width: 5vmin;
+    border-style: solid;
+    border-color: rgb(236, 144, 144) transparent transparent;
+    transform: scale(0.7);
+    top: 26vmin;
+  }
+
+  #board {
+    position: relative;
+    display: grid;
+    grid-template-rows: repeat(6, 9vmin);
+    grid-template-columns: repeat(7, 12vmin);
+    margin-top: 15vmin;
+    top: 13vmin;
     border: 1vmin solid black;
     border-radius: 10%;
     padding: 20px;
