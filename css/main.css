@@ -6,7 +6,10 @@ header {
   position: relative;
   color: black;
   font-size: 8vmin;
-  top: 18vmin;
+}
+
+header, h2, #markers {
+  top: 21vmin;
 }
 
 body {
@@ -14,12 +17,13 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  overflow: hidden;
   height: 100vmin;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0;
+  margin: auto;
   font-family: Arial, Times, sans-serif;
 }
 
@@ -139,7 +143,7 @@ button:hover {
   }
 }
 
-@media only screen and (min-width: 526px) and (max-width: 620px) {
+/* @media only screen and (min-width: 526px) and (max-width: 620px) {
 
   body {
     background: url("https://i.pinimg.com/originals/d8/39/74/d839742a057e1d111d0373fa614de906.jpg");
@@ -189,9 +193,9 @@ button:hover {
     position: relative;
     top: 23vmin;
   }
-}
+} */
 
-@media only screen and (min-width: 621px) and (max-width: 750px) {
+/* @media only screen and (min-width: 621px) and (max-width: 750px) {
 
   body {
     background: url("https://i.pinimg.com/originals/d8/39/74/d839742a057e1d111d0373fa614de906.jpg");
@@ -241,4 +245,4 @@ button:hover {
     position: relative;
     top: 23vmin;
   }
-}
+} */
