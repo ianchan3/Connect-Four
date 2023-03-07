@@ -11,7 +11,7 @@ The game of Connect Four involves two players strategically placing their game p
 [![My Skills](https://skillicons.dev/icons?i=js,html,css,github,vscode,markdown)](https://skillicons.dev)
 
 ## :link: **Links**
-https://ianchan3.github.io/Connect-Four/
+- https://ianchan3.github.io/Connect-Four
 
 ## :fast_forward: **Icebox Features (Next Steps)**
 - Include score count,
