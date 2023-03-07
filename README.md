@@ -1,7 +1,7 @@
 # :video_game: Connect-Four
 The game of Connect Four involves two players strategically placing their game pieces onto a board measuring 7 columns by 6 rows. The game objective is to achieve a win by forming a line of four pieces either vertically, horizontally, or diagonally. In the event that neither player achieves this, and the board is fully occupied, the game results in a draw.
 
-## **Samples of Gameplay**
+## :framed_picture: **Screenshots of Project**
 <img src = https://i.imgur.com/wYpyYIv.png> 
 <img src = https://i.imgur.com/KhZEHKl.jpg>
 <img src = https://i.imgur.com/7xnAizc.jpg> 
