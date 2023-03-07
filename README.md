@@ -8,7 +8,7 @@ The game of Connect Four involves two players strategically placing their game p
 <img src = https://i.imgur.com/ar6D3Yw.jpg>
 
 ## :computer: **Technologies Used**
-[![My Skills](https://skillicons.dev/icons?i=js,html,css)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=js,html,css,github,vscode,markdown)](https://skillicons.dev)
 
 ## :link: **Links**
 https://ianchan3.github.io/Connect-Four/
