@@ -1,21 +1,19 @@
-# Connect-Four
-Connect Four is a two player game where players alternately place pieces on a board 7 columns across and 6 rows high. The first player to reach 4 pieces in a row (vertical, horizontal, or diagonal) wins the game. If there are no more spaces left on the board and no player has reached 4 pieces in a row, the game results in a tie.
+# :video_game: Connect-Four
+The game of Connect Four involves two players strategically placing their game pieces onto a board measuring 7 columns by 6 rows. The game objective is to achieve a win by forming a line of four pieces either vertically, horizontally, or diagonally. In the event that neither player achieves this, and the board is fully occupied, the game results in a draw.
 
 ## **Samples of Gameplay**
-<img src = https://i.imgur.com/P16YjDD.jpg> 
-<img src = https://i.imgur.com/2e9rYAY.jpg>
-<img src = https://i.imgur.com/QaFtFVM.jpg> 
-<img src = https://i.imgur.com/J6fMrXH.jpg>
+<img src = https://i.imgur.com/wYpyYIv.png> 
+<img src = https://i.imgur.com/KhZEHKl.jpg>
+<img src = https://i.imgur.com/7xnAizc.jpg> 
+<img src = https://i.imgur.com/ar6D3Yw.jpg>
 
-## **Technologies Used**
-JavaScript,
-HTML,
-CSS
+## :computer: **Technologies Used**
+[![My Skills](https://skillicons.dev/icons?i=js,html,css)](https://skillicons.dev)
 
-## **Link to Play the Game Here**
-[Connect 4 Play My Game](https://ianchan3.github.io/Connect-Four/)
+## :link: **Links**
+https://ianchan3.github.io/Connect-Four/
 
-## **Icebox Features (Next Steps)**
+## :fast_forward: **Icebox Features (Next Steps)**
 - Include score count,
 - Drop Piece Animation,
 - Players Choice of Colors,
